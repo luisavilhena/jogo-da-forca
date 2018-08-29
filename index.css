@@ -1,0 +1,39 @@
+body {
+  background-color: black;
+}
+#container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.container-image {
+  max-width: 30%;
+}
+
+
+.container-game {
+  width: 18%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px 20px 0 20px;
+}
+
+button {
+  color: white;
+  background-color: black;
+  font-size: 20px;
+  margin: 10px;
+
+  border-style: none;
+}
+
+.word {
+  color: white;
+}
+
+.imagem-errado body {
+  background-color: green
+}
