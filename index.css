@@ -30,7 +30,8 @@ button {
   border-style: none;
 }
 
-.word {
+#word {
+  font-size: 30px;
   color: white;
 }
 

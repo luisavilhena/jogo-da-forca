@@ -1,38 +1,80 @@
 
-var button = document.querySelectorAll('button')
-
-
   // button.addEventListener('click' {
   //   console.log('clicou')
   // }
+'use strict';
 function setUp() {
+  //Array.from transforma nodelist em array
 
-    document.querySelectorAll('.letra').addEventListener('click', function(){
-      console.log('yes')
-    })
-
-    document.getElementById('oi').addEventListener('click', function(){
-    console.log('oi')
-    })
- 
- 
-
-  function existeEssaLetra (letra) {
+  function classLetraCerta (letra) {
     return letra.classList.contains('letra-certa')
   }
 
-  function coloqueUmaImagem (letra) {
-    letra.classList.add('imagem-errado')
+  // function retirarButton (letra) {
+  //   return letra.buttons.style.display = "none"
+  // }
+
+  var buttons = Array.from(document.querySelectorAll('button'))
+  var word = document.getElementById('word')
+
+  
+  buttons.forEach(function (item, index){
+    item.addEventListener('click', function(){
+
+      if (classLetraCerta(item) === true) {
+        var letter = item.getAttribute('data-letra')
+        var letterPlus = word.innerHTML = "<p>"+ letter + "</p>" 
+
+      } else {
+        console.log('errado')
+        }
+      })   
+    })
   }
 
-  function colocarALetra (letra) {
-    if(existeEssaLetra(button === true)){
-      //print a letra no programa
-    }
-  }
 
 
-}
+
+
+
+
+
+
+// var oneLetter =  buttons.forEach(function(item, index){
+//     item.addEventListener('click', function(){
+//       return item.getAttribute('data-letra')
+//     })   
+//   })
+// console.log(oneLetter)
+
+
+
+    // document.querySelectorAll('.letra').addEventListener('click', function(){
+    //   console.log('yes')
+    // })
+
+    // document.getElementById('oi').addEventListener('click', function(){
+    // console.log('oi')
+    // })
+ 
+ 
+
+//   function existeEssaLetra (letra) {
+//     return letra.classList.contains('letra-certa')
+//   }
+
+//   function coloqueUmaImagem (letra) {
+//     letra.classList.add('imagem-errado')
+//   }
+
+//   function colocarALetra (letra) {
+//     if(existeEssaLetra(button === true)){
+//       //print a letra no programa
+//     }
+//   }
+
+
+// }
 
 
 //  var palavras = {
