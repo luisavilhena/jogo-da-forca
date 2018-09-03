@@ -38,3 +38,7 @@ button {
 .imagem-errado body {
   background-color: green
 }
+
+span {
+  margin-right: 10px;
+}

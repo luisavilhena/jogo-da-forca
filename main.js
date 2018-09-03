@@ -10,9 +10,9 @@ function setUp() {
     return letra.classList.contains('letra-certa')
   }
 
-  // function retirarButton (letra) {
-  //   return letra.buttons.style.display = "none"
-  // }
+  function retirarButton (letra) {
+    return letra.style.opacity = 0
+  }
 
   var buttons = Array.from(document.querySelectorAll('button'))
   var word = document.getElementById('word')
@@ -23,10 +23,10 @@ function setUp() {
 
       if (classLetraCerta(item) === true) {
         var letter = item.getAttribute('data-letra')
-        var letterPlus = word.innerHTML = "<p>"+ letter + "</p>" 
+        var letterPlus = word.innerHTML += "<span>"+ letter + "</span>" 
 
       } else {
-        console.log('errado')
+        retirarButton(item)
         }
       })   
     })
