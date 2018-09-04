@@ -1,9 +1,9 @@
 body {
   background-color: black;
 }
+
 #container {
   display: flex;
-  flex-direction: row;
   justify-content: center;
 }
 
@@ -40,9 +40,28 @@ button {
 }
 
 span {
-  margin-right: 10px;
+  margin-right: 40px;
 }
+/*.space-letter {
+  margin-right: 40px;
+}*/
+
 .rosto {
   background-image: url("src/rosto2.png");
   width: 300px;
+  z-index: 3;
+  margin-top: -33px;
+}
+
+#letters-container {
+  display: flex;
+  font-size: 30px;
+  color: white;
+}
+
+#letters-container > * {
+  width: 30px;
+  display: inline-block;
+  border-bottom: 1px solid white;
+  margin-right: 4px;
 }
