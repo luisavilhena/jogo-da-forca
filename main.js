@@ -13,7 +13,11 @@ function setUp() {
   function retirarButton (letra) {
     return letra.style.opacity = 0
   }
+  function colocarRosto(letra) {
+    letra.classList.add('rosto')
+  }
 
+  var procurarImagem = document.getElementById("imagem-forca")
   var buttons = Array.from(document.querySelectorAll('button'))
   var word = document.getElementById('word')
 
@@ -27,6 +31,7 @@ function setUp() {
 
       } else {
         retirarButton(item)
+        colocarRosto(procurarImagem)
         }
       })   
     })

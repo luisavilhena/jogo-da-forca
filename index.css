@@ -42,3 +42,7 @@ button {
 span {
   margin-right: 10px;
 }
+.rosto {
+  background-image: url("src/rosto2.png");
+  width: 300px;
+}
