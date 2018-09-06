@@ -6,73 +6,149 @@ function setUp() {
     return item.style.opacity = 0
   }
 
-  function addImage(item) {
-    item.classList.add('rosto')
+  function aditionClassFace(item) {
+    item.classList.add('face')
   }
-  var harmImage = document.getElementById("imagem-forca")
-  var buttons = Array.from(document.querySelectorAll('button'))
-  var letters = Array.from(document.querySelectorAll('#letters-container > div'))
-  var targetWord = 'chuva'
+
+  function aditionClassHands(item) {
+    item.classList.add('hands')
+  }
+
+  function getLetterOccurrencesPositions(wordLetters, letter) {
+    var occurrencePositions = []
+
+    wordLetters.forEach(function (letterAtPosition, position) {
+      if (letterAtPosition === letter) {
+        occurrencePositions.push(position)
+      }
+    })
+
+    return occurrencePositions
+  }
+
+  var harmImageFace = document.getElementById("imagem-forca")
+  var harmImageHands = document.getElementById("container-hands")
+  var lettersContainer = document.getElementById("letters-container")
+  var buttons = Array.from(document.querySelectorAll('.letra'))
+  var box = document.getElementById('box')
+  var buttonRefresh =  document.getElementById("refresh")
+
+
+
+  var words = [
+    'queimar'.split(''),
+    // 'cultura'.split(''),
+    // 'chama'.split(''),
+    // 'luzia'.split(''),
+    // 'museu'.split(''),
+    // 'esquecimento'.split(''),
+    // 'nacional'.split(''),
+    // 'destruir'.split(''),
+    // 'descaso'.split(''),
+    // 'abandono'.split('')
+  ]
   var erro = 0
+  //0. sortear uma nova palavra 
+  var targetWordLetters = words[Math.floor(Math.random() * words.length)];
+
+  //0.1.aparece na tela o número de border-bottons de acordo com o tanto de letras 
+
+  function renderBoxes(container, boxCount){
+    while (boxCount > 0) {
+      container.innerHTML += '<div></div>'
+      boxCount = boxCount - 1
+    }
+  }
+  renderBoxes(lettersContainer, targetWordLetters.length)
+
 
   buttons.forEach(function(button){
     //1. ouvir o evento de click
     button.addEventListener('click', function(){
-    //2. qual a letra clicada?
-    var clickedLetter = button.innerText
-    console.log(clickedLetter)
-      
-    //3. a letra clicada tem a ver com a palavra?
-    var letterMatch = targetWord.includes(clickedLetter)
-    console.log(letterMatch)
+      var boxes = Array.from(document.querySelectorAll('#letters-container > div'))
+      //2. qual a letra clicada?
+      var clickedLetter = button.innerText
+      // console.log(clickedLetter)
+        
+      //3. a letra clicada tem a ver com a palavra?
 
-    //3.1 se sim em qual posição que a letra está?
-    if (letterMatch === true) {
-      var letterPosition = targetWord.indexOf(clickedLetter)
-      console.log(letterPosition)
-    //3.2 escreva a letra no lugar certo
-      var targetLetter = letters[letterPosition]
-      console.log(targetLetter)
-      targetLetter.innerText= clickedLetter
-    //4. se não, quais são as punições?
-    } else {
-    //4.1 aplica opacidade no button
-      opacityButton(button)
-    //4.2 inserir uma imagem
-      // addImage(harmImage)
-    //4.2.1 inserir um imagem para cada erro
-      switch (erro){
-      case 0:
-          addImage(harmImage)
+      var letterMatch = targetWordLetters.includes(clickedLetter)
+
+      
+      if (letterMatch === true) {
+        // 3.1 se sim em quais posições que a letra está?
+        var occurrencePositions = getLetterOccurrencesPositions(
+          targetWordLetters,
+          clickedLetter
+        )
+        // 3.2 para cada posicao em que a letra se encontra, escrever na caixa correspondente
+        occurrencePositions.forEach(function (position) {
+          boxes[position].innerText = clickedLetter
+        })
+        //3.3 se acertar todas as letras compara todas as letras
+        var congrat = targetWordLetters.every(function(item) {
+             console.log(clickedLetter)
+          return item === clickedLetter 
+        })
+
+        console.log(congrat)
+        if (congrat === true) {
+          console.log('parabéns')
+        }
+         
+      } else {
+        //4. se não, quais são as punições?
+        //4.1 aplica opacidade no button
+        opacityButton(button)
+        //4.2 inserir uma imagem
+        // aditionClassFace(harmImage)
+        //4.2.1 inserir um imagem para cada erro
+        switch (erro){
+        case 0:
+          aditionClassFace(harmImageFace)
+          console.log(erro)
+          box.innerText= "6"
+          break
+        case 1:
+          aditionClassHands(harmImageHands)
+          console.log(erro)
+          box.innerText= "5"
+          break
+        case 2:
+          box.innerText= "4"
           console.log(erro)
           break
-      case 1:
+        case 3:
+          box.innerText= "3"
           console.log(erro)
           break
-      case 2:
+        case 4:
+          box.innerText= "2"
           console.log(erro)
           break
-      case 3:
+        case 5:
+          box.innerText= '1'
           console.log(erro)
           break
-      case 4:
+        case 6:
+          box.innerText='last'
           console.log(erro)
           break
-      case 5:
-          console.log(erro)
-          break
-      case 6:
-          console.log(erro)
-          break
-      default:
+        default:
+        }
+        erro++;
+        //4.2.3 se errar mais de 6x, perdeu o jogo
+      } if (erro > 6) {
+        alert('acabou o jogo, perdeu!!!!!!!!!1')
       }
-      erro++;
-    //4.2.3 se errar mais de 6x, perdeu o jogo
-    } if (erro > 5) {
-      alert('acabou o jogo, perdeu!!!!!!!!!1')
-    }
     })
   }) 
+  //quando recomeçar é clicado o jogo se inicia
+  buttonRefresh.addEventListener('click', function() {
+    location.reload();
+  })
+ 
+
 
 
 
@@ -172,3 +248,23 @@ window.onload = setUp;
 
 
 
+
+
+// var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
+
+// console.log('===for===')
+// for (var i = 0; i < alphabet.length; i++) {
+//   console.log(alphabet[i])
+// }
+
+// console.log('===while===')
+// var loggedLetterCount = 0
+// while (loggedLetterCount < alphabet.length) {
+//   console.log(alphabet[loggedLetterCount])
+//   loggedLetterCount++
+// }
+
+// console.log('===forEach===')
+// alphabet.forEach(function (letter) {
+//   console.log(letter)
+// })
