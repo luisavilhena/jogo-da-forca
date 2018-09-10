@@ -87,6 +87,7 @@ function setUp() {
         })
         //3.3 se acertar todas as letras compara todas as letras
         var congrat = targetWordLetters.every(function(item) {
+          //escrever aqui
              console.log(clickedLetter)
           return item === clickedLetter 
         })
