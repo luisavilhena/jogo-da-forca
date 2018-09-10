@@ -26,6 +26,7 @@ function setUp() {
     return occurrencePositions
   }
 
+
   var harmImageFace = document.getElementById("imagem-forca")
   var harmImageHands = document.getElementById("container-hands")
   var lettersContainer = document.getElementById("letters-container")
@@ -50,6 +51,13 @@ function setUp() {
   var erro = 0
   //0. sortear uma nova palavra 
   var targetWordLetters = words[Math.floor(Math.random() * words.length)];
+
+  //Criar cópia da array targetWordLetters com elementos vazios
+  //copiar todos os elementos da targetwordletters
+  var completeWord = targetWordLetters.map(function(){
+    return ''
+  })
+  // console.log(completeWord)
 
   //0.1.aparece na tela o número de border-bottons de acordo com o tanto de letras 
 
@@ -84,13 +92,23 @@ function setUp() {
         // 3.2 para cada posicao em que a letra se encontra, escrever na caixa correspondente
         occurrencePositions.forEach(function (position) {
           boxes[position].innerText = clickedLetter
+          //completeWord é uma array em que guardo as letras que foram acertadas na posição certa
+          //(relação com acertar a palavra inteira)
+          completeWord[position] = clickedLetter
         })
-        //3.3 se acertar todas as letras compara todas as letras
+        // console.log(completeWord)
+
+
+        //3.3 se acertar todas as letras, parabéns
+        //comparar a completeword com a targetwordletters
+        //o item são todas as letras da targetWordLetters
+        //se tiver "includes" todas as letras da targetwordletters no completeword, retorne parabéns
+        // cada item tem que ser igual a 
         var congrat = targetWordLetters.every(function(item) {
-          //escrever aqui
-             console.log(clickedLetter)
-          return item === clickedLetter 
+          return completeWord.includes(item)
         })
+        
+        console.log(targetWordLetters, completeWord)
 
         console.log(congrat)
         if (congrat === true) {
