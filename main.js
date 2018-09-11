@@ -38,22 +38,22 @@ function setUp() {
 
   var words = [
     'queimar'.split(''),
-    // 'cultura'.split(''),
-    // 'chama'.split(''),
-    // 'luzia'.split(''),
-    // 'museu'.split(''),
-    // 'esquecimento'.split(''),
-    // 'nacional'.split(''),
-    // 'destruir'.split(''),
-    // 'descaso'.split(''),
-    // 'abandono'.split('')
+    'cultura'.split(''),
+    'chama'.split(''),
+    'luzia'.split(''),
+    'museu'.split(''),
+    'esquecimento'.split(''),
+    'nacional'.split(''),
+    'destruir'.split(''),
+    'descaso'.split(''),
+    'abandono'.split('')
   ]
   var erro = 0
   //0. sortear uma nova palavra 
   var targetWordLetters = words[Math.floor(Math.random() * words.length)];
 
-  //Criar cópia da array targetWordLetters com elementos vazios
-  //copiar todos os elementos da targetwordletters
+  //0.1 Criar cópia da array targetWordLetters com elementos vazios
+  //0.2 Copiar todos os elementos da targetwordletters, para guardar esses elemntos
   var completeWord = targetWordLetters.map(function(){
     return ''
   })
@@ -100,19 +100,19 @@ function setUp() {
 
 
         //3.3 se acertar todas as letras, parabéns
-        //comparar a completeword com a targetwordletters
+        //comparar a completeWord com a targetWordLetters
         //o item são todas as letras da targetWordLetters
-        //se tiver "includes" todas as letras da targetwordletters no completeword, retorne parabéns
+        //se tiver "includes" todas as letras da targetwordletters no completeWord, retorne parabéns
         // cada item tem que ser igual a 
         var congrat = targetWordLetters.every(function(item) {
           return completeWord.includes(item)
         })
-        
-        console.log(targetWordLetters, completeWord)
+
+        // console.log(targetWordLetters, completeWord)
 
         console.log(congrat)
         if (congrat === true) {
-          console.log('parabéns')
+          alert('parabéns')
         }
          
       } else {
