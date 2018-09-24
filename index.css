@@ -2,34 +2,73 @@ body {
   background-color: black;
 }
 
-#container {
-  display: flex;
-  justify-content: center;
-}
-
 h1 {
   color: white;
 }
 #box {
   color: white;
-  width: 40px;
+  width: 35px;
   height: 40px;
+  font-size: 45px;
   border: 1px solid white
 }
 
-.container-image {
+.first-floor {
+  margin-top: 15px;
   display: flex;
-  flex-direction: row
+  flex-direction: row;
+  justify-content: space-around;
 }
-/*img {
-  width: 80px;
-}*/
+.second-floor {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
 
+.third-floor {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.first-floor > img {
+width: 16%;
+height: 10%;
+}
+
+.third-floor > img {
+  width: 16%;
+  height: 10%;
+}
+
+.point {
+  display: flex;
+  align-items: center;
+}
+
+.point > #box {
+  margin-left: 15px;
+  text-align: center;
+}
+
+.cinemateca {
+  margin-top: 100px;
+}
+
+.teatro {
+  margin-top: -150px;
+  margin-right: 10px;
+}
+
+.portuguesa {
+
+}
 .container-game {
-  width: 20%;
+  width: 38%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   margin: 30px 20px 0 20px;
 }
@@ -40,6 +79,7 @@ button {
   font-size: 20px;
   margin: 10px;
   border-style: none;
+  border: 1px solid white;
 }
 
 #word {
@@ -51,16 +91,21 @@ span {
   margin-right: 40px;
 }
 
+#refresh {
+ padding: 10px;
+ margin: 0;
+}
+
 /*#imagem-forca {
   width: 800px;
 }*/
-.face {
+/*.face {
   background-image: url("src/rosto2.png");
   background-repeat: no-repeat;
   width: 300px;
   z-index: 3;
   margin-top: -33px;
-}
+}*/
 /*
 .hands {
   background-image: url("src/rosto2.png"), url("src/mao.png");
@@ -79,13 +124,16 @@ span {
 }*/
 
 #letters-container {
+  padding-top: 30px; 
   display: flex;
   font-size: 30px;
+  text-align: center;
   color: white;
 }
 
 #letters-container > div {
   width: 30px;
+  height: 30px;
   display: inline-block;
   border-bottom: 1px solid white;
   margin-right: 4px;
